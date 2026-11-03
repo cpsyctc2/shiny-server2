@@ -1,0 +1,142 @@
+### plotCIPearson
+
+suppressMessages(library(shiny))
+suppressMessages(library(shinyWidgets))
+suppressMessages(library(tidyverse))
+suppressMessages(library(CECPfuns))
+suppressMessages(library(shiny.telemetry))
+
+### 1. Initialize telemetry with default options (store to a local logfile)
+telemetry <- Telemetry$new(app_name = "plotCIPearson",
+                           data_storage = DataStorageSQLite$new(db_path = file.path("../../telemetry.sqlite"))) 
+
+# Define UI for application that does the work
+ui <- fluidPage(
+  
+  use_telemetry(), # 2. Add necessary Javascript to Shiny
+  
+  setBackgroundColor("#ffff99"),
+  ### this is from
+  ### https://stackoverflow.com/questions/51298177/how-to-centre-the-titlepanel-in-shiny
+  ### and centers the first title across the whole page by tweaking the css
+  tags$head(
+    tags$style(
+      ".title {margin: auto; align: center}"
+    )
+  ),
+  tags$div(class="title", titlePanel("Plot CIs around a given Pearson R for various dataset sizes\n\n")),
+  
+  # Get input values
+  sidebarLayout(
+    sidebarPanel(
+      h3("Put your values in here, replacing the existing ones",
+         align = "center"),
+      numericInput("R",
+                   "Pearson R -1 < R < 1",
+                   value = .65,
+                   min = -.9999,
+                   max = .9999,
+                   width = "100%"),
+      numericInput("minN",
+                   "Smallest n you want plotted",
+                   value = 10,
+                   min = 3,
+                   max = 1000,
+                   width = "100%"),
+      numericInput("maxN",
+                   "Largest n you want plotted",
+                   value = 100,
+                   min = 10,
+                   max = 10000,
+                   width = "100%"),
+      numericInput("step",
+                   "Step size to plot (optional)",
+                   value = 5,
+                   min = 3,
+                   max = 1000,
+                   width = "100%"),
+      numericInput("minY",
+                   "Smallest value on the y axis you want plotted",
+                   value = -1,
+                   min = -1,
+                   max = .8,
+                   width = "100%"),
+      numericInput("maxY",
+                   "Largest value on the y axis you want plotted",
+                   value = 1,
+                   min = .8,
+                   max = 1,
+                   width = "100%"),
+      numericInput("conf",
+                   "Width of CI (usually .95, i.e. 95% CI, <=.99)",
+                   value = .95,
+                   min = .7,
+                   max = .999,
+                   width = "100%")
+    ),
+    
+    mainPanel(
+      plotOutput("CIplot", height = 500),
+      p("App created by Chris Evans",
+        a("PSYCTC.org", href = "https://www.psyctc.org/psyctc/about-me/"),
+        "licenced under a ",
+        a("Creative Commons, Attribution Licence-ShareAlike",
+          href = "http://creativecommons.org/licenses/by-sa/1.0/"),
+        " Please respect that and put an acknowledgement and link back to here if re-using anything from here."),
+      hr(),
+      includeHTML("https://shiny.psyctc.org/boilerplate.html")
+    )
+  )
+)
+
+# Define server logic required
+server <- function(input, output, session) {
+  
+  ### from https://community.rstudio.com/t/r-crashes-when-closing-shiny-app-window-instead-of-clicking-red-stop-button-in-rstudio/131951
+  session$onSessionEnded(function() {
+    stopApp()
+  })
+  
+  telemetry$start_session(track_inputs = TRUE, track_values = TRUE) # 3. Track basics and inputs and input values
+  
+  ### 
+  ### start with validation functions
+  ###
+  checkNvalues <- function(minN, maxN){
+    if (maxN <= minN) {
+      return(FALSE)
+    }
+    return(TRUE)
+  }
+  checkYvalues <- function(minY, maxY){
+    if (maxY <= minY) {
+      return(FALSE)
+    }
+    return(TRUE)
+  }
+  ### 
+  ###
+  
+  makePlot <- function(R, minN, maxN, step, conf, minY, maxY) {
+    suppressWarnings(suppressMessages(plotCIPearson(corr = input$R, 
+                                                    minN = input$minN,
+                                                    maxN = input$maxN, 
+                                                    step = input$step,
+                                                    conf = input$conf, 
+                                                    minY = input$minY, 
+                                                    maxY = input$maxY))) -> p
+    return(p)
+  }
+  
+  output$CIplot <- renderPlot({
+    validate(
+      need(checkNvalues(input$minN, input$maxN), 
+           "maxN must be greater than minN"),
+      need(checkYvalues(input$minY, input$maxY), 
+           "maxY must be greater than minY"),
+    )
+    makePlot(input$R, input$minN, input$maxN, input$step, input$conf, input$minY, input$maxY)
+  })
+}
+# Run the application (ends all shiny apps in the one file, app.R format)
+shinyApp(ui = ui, server = server)
