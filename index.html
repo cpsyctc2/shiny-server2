@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Welcome to the PSYCTC/CORE shiny server!</title>
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+  <style type="text/css">
+    body, html {
+      font-family: Helvetica, Arial, sans-serif;
+      background-color: #F5F5F5;
+      color: #114;
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    #titleBar {
+      height: 80px;
+      background-color: #3475b4;
+      overflow: hidden;
+      border-bottom: 1px solid #3475b3;
+      -moz-box-shadow:    0px 0px 10px 3px #BBC;
+      -webkit-box-shadow: 0px 0px 10px 3px #BBC;
+      box-shadow:         0px 0px 10px 3px #BBC;
+    }
+    #titleBar #container {
+      margin-top: 14px;
+    }
+    #titleBar h1 {
+      margin: 0 auto .5em auto;
+      padding: .2em;
+      color: #EEE;
+      text-align: center;
+    }
+    #intro {
+      background-color: #DDD;
+      margin: 1em 1em 0 1em;
+      padding: .75em;
+      text-align: center;
+      border: 1px solid #CCC;
+      font-size: 18px;
+    }
+    #intro p {
+      margin: .3em 0 .3em 0;
+    }
+    #outer-content {
+      max-width: 910px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #content {
+      margin: 1em auto 1em auto;
+      float: left;
+    }
+    #main{
+      margin-left: 35px;
+      margin-right: 35px;
+      float: left;
+      line-height: 24px;
+    }
+
+    #shiny{
+      float: left;
+      width: 305px;
+      margin-left: -330px;
+      padding-left: 20px;
+      border-left: 1px solid #AAA;
+    }
+    #shiny iframe {
+      margin-top: 30px;
+    }
+    .caption{
+      font-size: 13px;
+    }
+    code {
+      background-color: #E5E5E5;
+      border: 1px solid #AAA;
+      -webkit-border-radius: 3px;
+      -khtml-border-radius: 3px; 
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      padding: 0 .5em 0 .5em;
+    }
+  </style>
+</head>
+<body>
+  <div id="titleBar">
+    <div id="container">
+      <h1>Welcome to the PSYCTC/CORE shiny server!</h1>
+    </div>
+  </div>
+  <div id = "main">
+    As of May 2025 I am creating some collections of apps which may make it easier to find the ones you want.
+    <ul>
+      <li><a href="./docs/CORE-OM/index.html">Apps pertinent to the CORE-OM,</a></li>
+      <li><a href="./docs/YP-CORE/index.html">Apps pertinent to the YP-CORE,</a></li>
+      <li><a href="./docs/CORE_general/index.html">Apps relating to any CORE measures</a></li>
+    </ul>
+    The full list of apps follows, click on one you want, allow a second or so for it to open.  
+  <a href="https://www.psyctc.org/psyctc/contact-me/">Do contact me</a> if you hit problems or have questions.</body>
+<h2>Apps</h1>
+<ul>
+  <li><b>Search apps</b></li>
+  <ul>
+  <li><a href="./apps/COREpapers1">Search interface to peer-reviewed papers relating to the CORE system</a> 
+  This complements paper<br>
+  Paz, Unda-López, Valdiviezo-Oña, Fernando Chávez, Elias Herrera Criollo, Toscano-Molina & Evans (2025).<br> 
+  Mapping the growth of the CORE system tools in psychotherapy research from 1998 to 2021: 
+  Learning from historical evidence.<br>
+  <i>Psychotherapy Research</i>, 1–12.<br>
+  Open access: <a href="https://doi.org/10.1080/10503307.2025.2457389">https://doi.org/10.1080/10503307.2025.2457389</a>.
+  <br>  <br>
+</li>
+  </ul>
+  <li><b>Apps giving useful values from a few inputs</b>
+  <ul>
+  <li><b><i>Apps saving you from looking up formulae or using a calculator</i></b></li>
+    <li><a href="./apps/useConvFiveNum/">App that gives you estimated mean and SD given sufficient of the min, q1, median, q3 and max for a dataset</a>.  
+       Uses the <i></i>conv.fivenum()</i> function from the <a href="https://wviechtb.github.io/metafor/reference/conv.fivenum.html">metafor R package</a></li>
+    <li><a href="./apps/RCI1/">App that gives you the RCI (Reliable Change Index) for given baseline score SD, reliability and the inclusion interval you want
+    (usually .95, i.e. 95%)</a>.  
+    Uses the <i></i>getRCIfromSDandAlpha()</i> function from the <a href="https://cecpfuns.psyctc.org/">CECPfuns R package</a> but the maths is trivial.
+    See also this next ...</li>
+    <li><a href="./apps/RCI2/">App which extends that to give you a plausible interval around that RCI</a> using the confidence interval for the SD given your n.
+    And that links with this next ...</li>
+    <li><a href="./apps/CSC1/">App that gives you the CSC (Clinically Significant Change)</a> method c cut off value for given referential help-seeking and
+    non-help-seeking means and SDs.  The maths is trivial for the CSC but this does show the plot of the probabilities underpinning the CSC and that it
+    balances the misclassification rates (given truly Gaussian distributions!).</li>
+   <li><a href="./apps/g_from_d_and_n/">App that gives you Hedges's g effect size measure</a> given reported Cohen's d and the n.  See also my
+    <a href="https://www.psyctc.org/Rblog/">Rblog</a> post: <a href="https://www.psyctc.org/Rblog/posts/2024-01-19-hedgess-g/">Hedges&apos;s g</a>.</li>
+   <li><a href="./apps/CSClookup2a/">App that gives you the appropriate CSC (and hence CSC classification)</a> given a YP-CORE score, age and gender.
+   It allows use of lookup tables for the CSC for the UK and Ireland and for Italy.  See also my <a href="https://www.psyctc.org/Rblog/">Rblog</a> post:
+   <a href="https://www.psyctc.org/Rblog/posts/2024-01-21-lookupcsc2/">CSC by gender and age</a> for more on this.</li>
+   <li><a href="./apps/Spearman-Brown/">App that gives you the predicted internal reliabilities for different lengths of measures</a> given a reliability
+     and length or a measure.  See also my <a href="https://www.psyctc.org/Rblog/">Rblog</a> post about
+     <a href="https://www.psyctc.org/Rblog/posts/2021-04-09-spearman-brown-formula/">the Spearman-Brown (or Brown-Spearman!) formula</a> that is behind this.
+     Links with this next ...</li>
+   <li><a href="./apps/Attenuation2/">App that gives you the attenuated correlation for any reliabilities of the two correlated variables and any
+       unattenuated correlation</a>.  See also my OMbook glossary entry:
+     <a href="https://www.psyctc.org/psyctc/glossary2/attenuation-by-unreliability-of-measurement/">Attenuation (by unreliability of measurement)</a>.</li>
+   <li><a href="./apps/Attenuation/">More complicated app for attenuated correlations giving plot and table of values for a range of unattenuated
+    correlations and of reliabilities of one of the variables</a>.  And both link to this ...</li>
+   <li><a href="./apps/getCorrectedR/">App that gives you the 'corrected' correlation from an observed correlation and the reliabilities
+       of the two  variables </a>.  This is the inverse of the last two apps above. Again, see also my OMbook glossary entry:
+     <a href="https://www.psyctc.org/psyctc/glossary2/attenuation-by-unreliability-of-measurement/">Attenuation (by unreliability of measurement)</a>.</li>
+    <li><a href="./apps/inter-item_mean_from_alpha/">App that gives you the mean inter-item correlation that for a given Cronbach alpha and k.</a>.  This is the inverse of the last two apps above.</li>
+    <li><a href="./apps/get_Sval_from_Pval/">App that gives you the s value (surprisal, self-information, or Shannon entropy index) from any p value.</a>.</li>
+    <li><a href="./apps/CORE-OM_scoring2/">App that gives correct overall (and non-risk) scores for the CORE-OM if you only have mean domain scores (and no missing data).</a>.</li>
+    <br>  <br>
+    
+
+   <li><i><b>Apps giving confidence intervals from observed counts or statistics and dataset sizes</b></i><br>These can be useful if you have these statistics
+  from a report that doesn&apos;t give the confidence intervals.</li>
+   <li><a href="./apps/CIproportion/">App that gives you a confidence interval around an observed proportion</a> given the total <i>n</i>, x the
+   (smaller) number of interest within that <i>n</i> and the width of CI you want (usually .95, i.e. 95%).  Uses the binconf() function from
+     the Hmisc R package which uses the Wilson method to get the CI.</li>
+   <li><a href="./apps/CIdiff2proportions/">App that gives you a confidence interval around the difference between two independent proportions</a>
+     given the total <i>n</i>, x in each dataset/group, the numbers of interest within each group <i>n</i> and the width of CI you want (usually .95,
+     i.e. 95%).  Gives what I call a "biplane plot" of the two CIs.</li>
+   <li><a href="./apps/CImean/">App that gives you a confidence interval (CI) around an observed mean</a> given that value, either the observed
+     SD or SE, the width of CI you want (usually .95, i.e. 95%) and the <i>n</i> of the dataset from which the alpha was obtained.  The maths is
+     parametric and can be sensitive to non-Gaussian distributions, bootstrap CI definitely preferred if you have the raw data.</li>
+   <li><a href="./apps/CISD/">App that gives you a confidence interval (CI) around an observed SD or variance</a> given that value,
+     either the observed SD or SE, the width of CI you want (usually .95, i.e. 95%) and the <i>n</i> of the dataset from which the
+     alpha was obtained.  Again, the maths is parametric and can be sensitive to non-Gaussian distributions, bootstrap CI definitely
+     preferred if you have the raw data.</li>
+   <li><a href="./apps/CIcorrelation/">App that gives you a confidence interval around an observed Pearson correlation</a> given the total
+     <i>n</i>, R the correlation and the width of CI you want (usually .95, i.e. 95%). Uses basic parametric theory so treat the CI as indicative
+     rather than definitive.  However, if all you have is the <i>n</i> and correlation, it&apos;s the best you can do!</li>
+   <li><a href="./apps/CISpearman/">App that gives you a confidence interval around an observed Spearman correlation</a> given the total <i>n</i>,
+     Rs the correlation and the width of CI you want (usually .95, i.e. 95%). I used to say the Pearson CI could be used but that is a very poor
+     approximation, this is better.</li>
+   <li><a href="./apps/Cronbach1Feldt/">App that gives you a confidence interval (CI) around an observed Cronbach alpha value</a>
+     given that value, the width of CI you want (usually .95, i.e. 95%) and the <i>n</i> of the dataset from which the alpha was obtained.
+     The maths is parametric but fairly robust to non-Gaussian distributions.  See also the next one ...</li>
+       <br>  <br>
+
+    <li><i><b>Apps giving p values</b></i><br>I am generally not keen on p values as they are so overused and misunderstood but this one can be useful ....</li>
+      <li><a href="./apps/Feldt2/">App giving a p value for the difference between two Cronbach alpha values from independent samples</a>.</li>
+     <br>  <br>
+    <li><i><b>Utility Apps</b></i><br>So far just the one ....</li>
+      <li><a href="./apps/random1/">App giving you a random permutation of <i>n</i> objects</i></a>.  This is mainly to support using the method of derangements
+         which is part of what I call <a href="https://www.psyctc.org/psyctc/root/rigorous-idiography/"</a> 'rigorous idiography'.</a>.</li>
+     <br>  <br>
+    <li><b><i>Apps to give plots from population parameters or sample statistics</b></i></li>
+   <li><a href="./apps/Gaussian1/">App that gives sample statistics, histogram, ecdf and qqplot for samples from a true Gaussian population.</a>
+     You input the sample size, mean, SD you want and the number of histogram bins (and the random number seed: to get replicable samples).
+     Mainly for teaching/illustration.</li>
+   <li><a href="./apps/plotCIPearson/">App that gives a plot of the CIs around an observed Pearson correlation</a> for a range of dataset sizes (n).
+     The CI can be anything from .7 to .999 but defaults to .95, i.e. 95%.  This is a parametric CI as it assumes you only have an R value of interest
+     to you, not data. Probably mainly for teaching/illustration.</li>
+     <br>  <br>
+     <li><b><i>Illustrative and modelling apps</i></b></li>
+   
+   <li><a href="./apps/Create_univariate_data/">App to create samples of data from various population distributions</a>
+     Currently it has just Gaussian and uniform distributions as these are the most common in pure modelling distributions in our field.
+     You control the seed (to get replicable samples), the <i>n</i> and the population parameters and you can get the data as space,
+     comma, semicolon and tab spaced vectors or as a table that you can download in spreadsheet formats.  You can use this to generate data
+     to feed into other data crunching apps here as those expand.</i></li>
+   
+   <li><a href="./apps/Screening/">Model of a simple screening design taking the n, prevalence and the sensitivity and specificity of the screening test.</a>
+     Gives full screening table and the PPV and NPV.  Changing the prevalence allows you to see how much this affects PPV and NPV. Created to complement the
+     <a href="https://ombook.psyctc.org/book/">OMbook</a> <a href="https://www.psyctc.org/psyctc/book/glossary/">glossary</a> entry <a href="https://www.psyctc.org/psyctc/glossary2/screening/">about screening</a>.</li>
+   
+   <li><a href="./apps/Bonferroni/">Model of how the statistical power to detect an effect is affected by using the Bonferroni correction for multiple tests.</a>
+     Created to complement <a href="https://ombook.psyctc.org/book/">OMbook</a> <a href="https://www.psyctc.org/psyctc/book/glossary/">glossary</a>
+     entry about <a href="https://www.psyctc.org/psyctc/glossary2/bonferroni-correction/">the Bonferroni correction</a>.</li>
+         <br>  <br>
+          </ul>
+        <li><b>Apps using uploaded file data</b>.  These apps can generally take data from CSV, TSV (Tab Separated Variables), R format, SPSS .sav file, 
+              Excel .xlsx and .xls or Libre/OpenOffice .ods files</li>
+        <ul>
+          <li><a href="./apps/YP-CORE_2_scores/">App that analyses datasets of one or two YP-CORE scores </a> per participant. 
+	    This allows you to upload spreadsheet data in CSV, Excel or Libre/Open Office based on template files (below).  
+	    You can choose the appropriate referential data, currently the new improved reference values for the UK and Ireland, 
+	    the older UK values and the current Italian values.  It then uses those and the age and gender of the participant to 
+	    give the RCSC categories but it also has a pretty extensive menu of analyses of the data and plots including cats' cradle
+	    and Jacobson plots. <i>Try it with the example data below!</i></li>
+	        <li><a href="./apps/Hashing_IDs/">App to give hashed values when pseudonymising data.</a>
+            You select a variable, usually the ID variable you were using.  You give the app the
+	    hash key phrase you want used and it creates the hashed values and allows you to download the original ID code (as text values)
+	    and the hashed values.</li>
+	        <li><a href="./apps/Forest_plot_rates/">App that gives a forest plot of rates</a> with chi squared and Fisher test of differences.
+	        It takes a dataset of year, total <i>n</i> and <i>n</i> improved values for year on year data from practitioners or services.
+	        First written to complement the <a href="https://therapymeetsnumbers.com/does-brief-therapy-yield-better-outcomes/">
+	        Does brief therapy yield better outcomes?</a> post in the excellent 
+	        <a href="https://therapymeetsnumbers.com/"> <em>Therapy Meets Numbers</em></a> website.</li>
+          <li><a href="./apps/Histogram_and_summary1/">App that takes data from file upload for histogram and summary statistics</a>. 
+              This gives a downloadable histogram with some configuration and downloadable summary statistics. 
+              Non-numeric values and missing values are noted but ignored.</li>
+          <li><a href="./apps/ECDFplot/">App that gives you a confidence interval (CI) around observed quantiles of a distribution</a> given
+	    the data, the quantiles you want and
+	    the width of CI you want (usually .95, i.e. 95%) and the <i>n</i> of the dataset from which the alpha was obtained.
+	    Uses Nyblom&apos;s method to get robust CIs for the quantiles. New version, as of 5.vi.24 allows uploading of data as well as just pasting it in.</li>
+	        <li><a href="./apps/CORE-OM_scoring/">App that scores CORE-OM item data </a>. This takes an Excel file of the format I created to score CORE-OM
+	    data collected with Microsoft forms.  This is proof of concept really and should be followed by apps allowing CORE-OM, and then other CORE measures&apos;,
+	    item scores to be uploaded and scored.  It gives all the CORE-OM scores including the CORE-6D utility score and also gives the scores for the embedded
+	    items of all the shorter adult measures that are derived from the CORE-OM. </li>
+
+        </ul>
+      
+  </ul>
+  <h2>Usage statistics</h2>
+  For those with incurable geeky curiosity (OK, mostly for my insatiable geeky curiosity!) I have created a breakdown of the log data
+  <a href="https://www.psyctc.org/Analysing_shiny_usage.html">here</a>.<br> 
+  As above: do please <a href="https://www.psyctc.org/psyctc/contact-me/">contact me</a> if you hit problems or have questions.
+  
+  <h2>Licence and using all or some of the code</h2>
+  All the code and other things on the server are licenced under a 
+  <a href="http://creativecommons.org/licenses/by-sa/1.0/">"Creative Commons, Attribution Licence-ShareAlike"</a> licence.  
+  As long as you respect the terms of the licence that entitles you to use code from the site or the whole site and you can also 
+  draw on the code to create your own variations that do what you need but you must then release them under the same licence,
+  i.e. you must make them available for people to dowload and you must acknowledge that the code you used came from here.
+  Please respect that and put an acknowledgement and link back to here if re-using anything from here. 
+  Do please also <a href="https://www.psyctc.org/psyctc/contact-me/">contact me</a> if you do reuse all or anything: I'd love to
+  know, equally, I am sure people can improve on my code: do tell me if you think you have clear improvements.
+  
+  <h2>Installing the server on your own hardware</h2>
+  If you are sufficiently geeky that you understand git then you should be able to pull the whole site from https://github.com/cpsyctc/shiny-server.
+  If you are that competent with git and github then do please <a href="https://www.psyctc.org/psyctc/contact-me/">contact me</a>
+  and show me how I should change that repository to make it easy for people to submit, and for me to review, patches.
+  
+  You will need to ensure that all the required packages are installed.  I have created an Rmarkdown file "findPackages.Rmd" which
+  you can run this from the console with 
+  
+  Rscript -e "rmarkdown::render('findPackages.Rmd')"
+  
+  (I am assuming that you are installing in a Linux operating system, I can't vouch for this working 
+  on Apple or Windoze.  Do <a href="https://www.psyctc.org/psyctc/contact-me/">contact me</a> if you can advise me about this 
+  on those platforms.)
+  
+  If that code finds that you are missing some packages it creates a vector of those package names which is saved 
+  in "vecMissingPackages.Rda". You can that load into an R session with:  
+  
+  <pre>load(file = "vecMissingPackages.Rda")</pre>  
+  
+  I have also stored it as a csv file "missingPackages.csv" which should read in with:  
+  
+  <pre>read.csv(file = "missingPackages.csv") -> vecMissingPackages</pre>
+
+  You should then be able to use that vector (vecMissingPackages) to install the missing packages with 
+  
+  <pre>install.packages(vecMissingPackages, ask = TRUE, checkBuilt = TRUE)</pre>
+  
+  You may find that some of the missing packages aren't on CRAN, for example my own CECPfuns package.  The instructions to install that,
+  and more about it are at [https://cecpfuns.psyctc.org](https://cecpfuns.psyctc.org).  If there are other non-CRAN packages
+  you may have to do a bit of internet searching to discover where they live and how to install them.  If you have problems 
+  despite searching, do please [contact me](https://www.psyctc.org/psyctc/contact-me/).
+  
+  
+  <h2>Email update list</h2>
+  <p>There is now an Email announcement list, never updating more than monthly, where I will put up developments of new apps here but also a summary of updates to the 
+  <a href="https://www.psyctc.org/psyctc/book/glossary/">online glossary</a> and new posts in 
+  <a href="https://www.psyctc.org/Rblog/index.html">the Rblog</a>. You can sign up for the update list 
+  <a href="https://ombook.psyctc.org/signup">here</a> to be alerted to new things.</p>
+  <p><i>Last updated 1.xi.26</i></p>
+  </div>
+</html>
