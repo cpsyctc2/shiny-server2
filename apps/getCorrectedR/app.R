@@ -113,8 +113,8 @@ ui <- fluidPage(
                                href="http://creativecommons.org/licenses/by-sa/1.0/"),
                              " Please respect that and put an acknowledgement and link back to here if re-using anything from here."),
                            # includeHTML("https://shiny.psyctc.org/boilerplate.html")
-                           )
-      ),
+                           ),
+      )
     )
   )
 )

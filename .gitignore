@@ -2,7 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-telemetry.sqlite*
+telemetry.sqlite
 tmp*
 *in_progress*
 *allDat.csv
